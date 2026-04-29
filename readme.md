@@ -14,9 +14,9 @@ After the service has run once, `/opt/vllm` will also contain `bin/`, `.venv/`,
 ## Install
 
 ```bash
-# 1. Clone to /opt/vllm (using your own SSH agent, not root's)
+# 1. Clone to /opt/vllm
 sudo install -d -o "$USER" /opt/vllm
-git clone git@github.com:aapeliv/vllm-configs.git /opt/vllm
+sudo git clone https://github.com/aapeliv/vllm-configs.git /opt/vllm
 
 # 2. Create the service user and hand it the directory
 sudo useradd --system --home-dir /opt/vllm --shell /usr/sbin/nologin vllm
