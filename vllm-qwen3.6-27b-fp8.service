@@ -12,6 +12,8 @@ Environment=HF_HOME=/opt/vllm/hf-cache
 Environment=UV_CACHE_DIR=/opt/vllm/uv-cache
 Environment=UV_PROJECT_ENVIRONMENT=/opt/vllm/.venv
 Environment=XDG_CACHE_HOME=/opt/vllm/cache
+Environment=VLLM_NO_USAGE_STATS=1
+Environment=DO_NOT_TRACK=1
 ExecStart=/opt/vllm/bin/uv run vllm serve Qwen/Qwen3.6-27B-FP8 \
     --served-model-name qwen3.6-27b \
     --port 10013 \
