@@ -1,0 +1,5 @@
+.venv/
+hf-cache/
+uv-cache/
+cache/
+env

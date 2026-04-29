@@ -1,0 +1,8 @@
+[project]
+name = "vllm-configs"
+version = "0.1.0"
+description = "vLLM service configs"
+requires-python = ">=3.13"
+dependencies = [
+    "vllm>=0.20.0",
+]
