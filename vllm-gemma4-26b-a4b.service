@@ -1,0 +1,38 @@
+[Unit]
+Description=vLLM serving cyankiwi/gemma-4-26B-A4B-it-AWQ-4bit
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=vllm
+Group=vllm
+WorkingDirectory=/opt/vllm
+Environment=HF_HOME=/opt/vllm/hf-cache
+Environment=UV_CACHE_DIR=/opt/vllm/uv-cache
+Environment=UV_PROJECT_ENVIRONMENT=/opt/vllm/.venv
+Environment=XDG_CACHE_HOME=/opt/vllm/cache
+Environment=VLLM_NO_USAGE_STATS=1
+Environment=DO_NOT_TRACK=1
+Environment=CUDA_VISIBLE_DEVICES=1
+ExecStart=/opt/vllm/bin/uv run vllm serve cyankiwi/gemma-4-26B-A4B-it-AWQ-4bit \
+    --served-model-name gemma4-26b-a4b \
+    --port 10013 \
+    --tensor-parallel-size 1 \
+    --max-model-len 32768 \
+    --gpu-memory-utilization 0.95 \
+    --max-num-seqs 8 \
+    --enable-auto-tool-choice \
+    --tool-call-parser gemma4 \
+    --reasoning-parser gemma4 \
+    --enable-prefix-caching \
+    --enable-chunked-prefill \
+    --max-num-batched-tokens 8192 \
+    --async-scheduling \
+    --speculative-config '{"model":"RedHatAI/gemma-4-26B-A4B-it-speculator.eagle3","num_speculative_tokens":3,"method":"eagle3"}'
+Restart=on-failure
+RestartSec=10
+TimeoutStartSec=1800
+
+[Install]
+WantedBy=multi-user.target
