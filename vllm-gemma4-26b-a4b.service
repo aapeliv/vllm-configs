@@ -19,8 +19,8 @@ ExecStart=/opt/vllm/bin/uv run vllm serve cyankiwi/gemma-4-26B-A4B-it-AWQ-4bit \
     --served-model-name gemma4-26b-a4b \
     --port 10013 \
     --tensor-parallel-size 1 \
-    --max-model-len 32768 \
-    --gpu-memory-utilization 0.95 \
+    --max-model-len 24576 \
+    --gpu-memory-utilization 0.93 \
     --max-num-seqs 8 \
     --enable-auto-tool-choice \
     --tool-call-parser gemma4 \
@@ -30,7 +30,7 @@ ExecStart=/opt/vllm/bin/uv run vllm serve cyankiwi/gemma-4-26B-A4B-it-AWQ-4bit \
     --max-num-batched-tokens 8192 \
     --async-scheduling \
     --speculative-config '{"model":"RedHatAI/gemma-4-26B-A4B-it-speculator.eagle3","num_speculative_tokens":3,"method":"eagle3"}'
-Restart=on-failure
+Restart=always
 RestartSec=10
 TimeoutStartSec=1800
 
