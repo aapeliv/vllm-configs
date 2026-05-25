@@ -19,8 +19,8 @@ ExecStart=/opt/vllm/bin/uv run vllm serve cyankiwi/gemma-4-26B-A4B-it-AWQ-4bit \
     --served-model-name gemma4-26b-a4b \
     --port 10013 \
     --tensor-parallel-size 1 \
-    --max-model-len 24576 \
-    --gpu-memory-utilization 0.93 \
+    --max-model-len 32768 \
+    --gpu-memory-utilization 0.95 \
     --max-num-seqs 8 \
     --scheduling-policy priority \
     --enable-auto-tool-choice \
