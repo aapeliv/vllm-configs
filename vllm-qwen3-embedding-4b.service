@@ -1,0 +1,31 @@
+[Unit]
+Description=vLLM serving Qwen/Qwen3-Embedding-4B
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=vllm
+Group=vllm
+WorkingDirectory=/opt/vllm
+Environment=HF_HOME=/opt/vllm/hf-cache
+Environment=UV_CACHE_DIR=/opt/vllm/uv-cache
+Environment=UV_PROJECT_ENVIRONMENT=/opt/vllm/.venv
+Environment=XDG_CACHE_HOME=/opt/vllm/cache
+Environment=VLLM_NO_USAGE_STATS=1
+Environment=DO_NOT_TRACK=1
+Environment=CUDA_VISIBLE_DEVICES=0
+ExecStart=/opt/vllm/bin/uv run vllm serve Qwen/Qwen3-Embedding-4B \
+    --served-model-name qwen3-embedding-4b \
+    --port 10014 \
+    --task embed \
+    --quantization fp8 \
+    --tensor-parallel-size 1 \
+    --max-model-len 32768 \
+    --gpu-memory-utilization 0.90
+Restart=always
+RestartSec=10
+TimeoutStartSec=1800
+
+[Install]
+WantedBy=multi-user.target

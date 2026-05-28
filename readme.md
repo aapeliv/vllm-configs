@@ -8,6 +8,7 @@ repo, `uv`, the venv, and the model cache all live in one directory.
 - `pyproject.toml` / `uv.lock` / `.python-version` — `uv` project pinning `vllm`.
 - `vllm-qwen3.6-27b-fp8.service` — systemd unit for `Qwen/Qwen3.6-27B-FP8`.
 - `vllm-gemma4-26b-a4b.service` — systemd unit for `cyankiwi/gemma-4-26B-A4B-it-AWQ-4bit`.
+- `vllm-qwen3-embedding-4b.service` — systemd unit for `Qwen/Qwen3-Embedding-4B`.
 
 After the service has run once, `/opt/vllm` will also contain `bin/`, `.venv/`,
 `hf-cache/`, and `uv-cache/`.
