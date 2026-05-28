@@ -18,7 +18,7 @@ Environment=CUDA_VISIBLE_DEVICES=0
 ExecStart=/opt/vllm/bin/uv run vllm serve Qwen/Qwen3-Embedding-4B \
     --served-model-name qwen3-embedding-4b \
     --port 10014 \
-    --task embed \
+    --runner pooling \
     --quantization fp8 \
     --tensor-parallel-size 1 \
     --max-model-len 32768 \
