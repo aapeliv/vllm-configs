@@ -3913,7 +3913,7 @@ dependencies = [
     { name = "xgrammar", marker = "platform_machine == 'aarch64' or platform_machine == 'arm64' or platform_machine == 'ppc64le' or platform_machine == 's390x' or platform_machine == 'x86_64'" },
 ]
 wheels = [
-    { url = "https://wheels.vllm.ai/acb0f1dcdb668d90bbbf50e57552d2f6f0987c87/vllm-0.27.2rc1.dev110%2Bgacb0f1dcd-cp38-abi3-manylinux_2_28_x86_64.whl", hash = "sha256:891b87d82da5a2f5068eec4615e1290a77ceca1d8dafe84666b2361aba8c46a9" },
+    { url = "https://wheels.vllm.ai/acb0f1dcdb668d90bbbf50e57552d2f6f0987c87/vllm-0.27.2rc1.dev110%2Bgacb0f1dcd-cp38-abi3-manylinux_2_28_x86_64.whl", hash = "sha256:f01d675ff8e436f25eb03589c00fcb57b4218ce62d8edd4c59d494f410a13f79" },
 ]
 
 [package.metadata]
