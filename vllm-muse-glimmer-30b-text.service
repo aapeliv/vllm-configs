@@ -16,12 +16,13 @@ Environment=VLLM_NO_USAGE_STATS=1
 Environment=DO_NOT_TRACK=1
 Environment=CUDA_VISIBLE_DEVICES=0
 Environment=VLLM_USE_FLASHINFER_SAMPLER=0
+Environment=PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
 ExecStart=/opt/vllm/bin/uv run vllm serve RedHatAI/Muse-Glimmer-30B-W4A16 \
     --served-model-name muse-glimmer-30b \
     --port 10015 \
     --tensor-parallel-size 1 \
     --max-model-len 32768 \
-    --gpu-memory-utilization 0.96 \
+    --gpu-memory-utilization 0.92 \
     --max-num-seqs 32 \
     --max-num-batched-tokens 8192 \
     --kv-cache-dtype fp8 \

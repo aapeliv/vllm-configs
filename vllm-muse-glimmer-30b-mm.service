@@ -16,6 +16,7 @@ Environment=VLLM_NO_USAGE_STATS=1
 Environment=DO_NOT_TRACK=1
 Environment=CUDA_VISIBLE_DEVICES=0
 Environment=VLLM_USE_FLASHINFER_SAMPLER=0
+Environment=PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
 ExecStart=/opt/vllm/bin/uv run vllm serve RedHatAI/Muse-Glimmer-30B-W4A16 \
     --served-model-name muse-glimmer-30b \
     --port 10015 \
