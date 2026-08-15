@@ -15,6 +15,7 @@ Environment=XDG_CACHE_HOME=/opt/vllm/cache
 Environment=VLLM_NO_USAGE_STATS=1
 Environment=DO_NOT_TRACK=1
 Environment=CUDA_VISIBLE_DEVICES=1
+Environment=VLLM_USE_FLASHINFER_SAMPLER=0
 ExecStart=/opt/vllm/bin/uv run vllm serve cyankiwi/gemma-4-26B-A4B-it-AWQ-4bit \
     --served-model-name gemma4-26b-a4b \
     --port 10013 \
