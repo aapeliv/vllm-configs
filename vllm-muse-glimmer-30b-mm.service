@@ -1,0 +1,41 @@
+[Unit]
+Description=vLLM serving RedHatAI/Muse-Glimmer-30B-W4A16 (multimodal)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=vllm
+Group=vllm
+WorkingDirectory=/opt/vllm
+Environment=HF_HOME=/opt/vllm/hf-cache
+Environment=UV_CACHE_DIR=/opt/vllm/uv-cache
+Environment=UV_PROJECT_ENVIRONMENT=/opt/vllm/.venv
+Environment=XDG_CACHE_HOME=/opt/vllm/cache
+Environment=VLLM_NO_USAGE_STATS=1
+Environment=DO_NOT_TRACK=1
+Environment=CUDA_VISIBLE_DEVICES=0
+Environment=VLLM_USE_FLASHINFER_SAMPLER=0
+ExecStart=/opt/vllm/bin/uv run vllm serve RedHatAI/Muse-Glimmer-30B-W4A16 \
+    --served-model-name muse-glimmer-30b \
+    --port 10015 \
+    --tensor-parallel-size 1 \
+    --max-model-len 32768 \
+    --gpu-memory-utilization 0.97 \
+    --max-num-seqs 4 \
+    --max-num-batched-tokens 1024 \
+    --kv-cache-dtype fp8 \
+    --limit-mm-per-prompt '{"image": 1, "video": 0}' \
+    --enable-prefix-caching \
+    --enable-chunked-prefill \
+    --enable-auto-tool-choice \
+    --tool-call-parser muse_glimmer \
+    --reasoning-parser muse_glimmer \
+    --default-chat-template-kwargs '{"reasoning_strength": "low"}' \
+    --generation-config auto
+Restart=always
+RestartSec=10
+TimeoutStartSec=3600
+
+[Install]
+WantedBy=multi-user.target
