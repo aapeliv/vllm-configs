@@ -1,5 +1,5 @@
 [Unit]
-Description=vLLM serving RedHatAI/Muse-Glimmer-30B-W4A16 (text-only)
+Description=vLLM serving cyankiwi/Qwen3.8-27B-AWQ-INT4
 After=network-online.target
 Wants=network-online.target
 
@@ -17,23 +17,23 @@ Environment=DO_NOT_TRACK=1
 Environment=CUDA_VISIBLE_DEVICES=0
 Environment=VLLM_USE_FLASHINFER_SAMPLER=0
 Environment=PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
-ExecStart=/opt/vllm/bin/uv run vllm serve RedHatAI/Muse-Glimmer-30B-W4A16 \
-    --served-model-name muse-glimmer-30b \
+ExecStart=/opt/vllm/bin/uv run vllm serve cyankiwi/Qwen3.8-27B-AWQ-INT4 \
+    --served-model-name qwen3.8-27b \
     --port 10014 \
     --tensor-parallel-size 1 \
     --max-model-len 32768 \
-    --gpu-memory-utilization 0.92 \
-    --max-num-seqs 32 \
-    --max-num-batched-tokens 8192 \
-    --kv-cache-dtype fp8 \
-    --limit-mm-per-prompt '{"image": 0, "video": 0}' \
+    --gpu-memory-utilization 0.97 \
+    --max-num-seqs 4 \
+    --max-num-batched-tokens 2048 \
     --enable-prefix-caching \
-    --enable-chunked-prefill \
     --async-scheduling \
+    --limit-mm-per-prompt '{"video": 0}' \
+    --skip-mm-profiling \
+    --enable-chunked-prefill \
     --enable-auto-tool-choice \
-    --tool-call-parser muse_glimmer \
-    --reasoning-parser muse_glimmer \
-    --default-chat-template-kwargs '{"reasoning_strength": "low"}' \
+    --tool-call-parser qwen3_coder \
+    --reasoning-parser qwen3 \
+    --default-chat-template-kwargs '{"reasoning_effort": "low"}' \
     --generation-config auto
 Restart=always
 RestartSec=10
