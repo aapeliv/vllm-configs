@@ -25,8 +25,7 @@ ExecStart=/opt/vllm/bin/uv run vllm serve RedHatAI/Muse-Glimmer-30B-W4A16 \
     --gpu-memory-utilization 0.97 \
     --max-num-seqs 4 \
     --max-num-batched-tokens 1024 \
-    --kv-cache-dtype fp8 \
-    --limit-mm-per-prompt '{"image": 1, "video": 0}' \
+    --limit-mm-per-prompt '{"video": 0}' \
     --enable-prefix-caching \
     --enable-chunked-prefill \
     --enable-auto-tool-choice \
