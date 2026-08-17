@@ -9,7 +9,7 @@ repo, `uv`, the venv, and the model cache all live in one directory.
 - `vllm-qwen3.6-27b-fp8.service` — systemd unit for `Qwen/Qwen3.6-27B-FP8`.
 - `vllm-gemma4-26b-a4b.service` — systemd unit for `cyankiwi/gemma-4-26B-A4B-it-AWQ-4bit`.
 - `vllm-qwen3-embedding-4b.service` — systemd unit for `Qwen/Qwen3-Embedding-4B`.
-- `vllm-qwen3.8-27b-awq.service` — systemd unit for `cyankiwi/Qwen3.8-27B-AWQ-INT4`, single GPU.
+- `vllm-qwen3.8-27b.service` — systemd unit for `cyankiwi/Qwen3.8-27B-AWQ-INT4`.
 - `vllm-muse-glimmer-30b-text.service` — systemd unit for `RedHatAI/Muse-Glimmer-30B-W4A16`, text-only.
 - `vllm-muse-glimmer-30b-mm.service` — same, with images enabled.
 
